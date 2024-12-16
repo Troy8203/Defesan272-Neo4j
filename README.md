@@ -62,7 +62,7 @@ Una vez que los contenedores estén corriendo, puedes acceder a la interfaz web 
 CREATE (a: Jugador {nombre: "Lionel Messi"}),
     (b: Equipo {nombre: "Barcelona"})
 WITH a, b
-CREATE (a)-[n: JuegaPara]→(b)
+CREATE (a)-[n: JuegaPara]->(b)
 SET n. since=date("2001-02-01")
 RETURN a, n, b
 ```
@@ -100,7 +100,11 @@ CREATE (rob)-[:Friendswith]->(isidro),
     (mau)-[:Friendswith]->(lucas),
     (lucas)-[:Friendswith]->(nora),
     (freddy)-[: Friendswith]->(nora);
+```
 
+Mostrar los Datos
+
+```cql
 MATCH friendships=()-[:Friendswith]-()
 RETURN friendships
 ```
@@ -111,8 +115,8 @@ Listado de amigos de amigos
 
 ```cql
 MATCH (n)-[:Friendswith*2]-(fof)
-WHERE n. Name = 'Roberto'
-RETURN n.Name, fof. Name
+WHERE n.name = 'Roberto'
+RETURN n.name AS Person, fof.name AS FriendOfFriend;
 ```
 
 [![image.png](https://i.postimg.cc/y8csxcTT/image.png)](https://postimg.cc/xXfWFkhk)
