@@ -11,7 +11,7 @@ services:
       - NEO4J_AUTH=neo4j/strongpassword123 # Contraseña válida
       - NEO4J_dbms_security_auth__minimum__password__length=4 # Reducir requisito de longitud (opcional)
     volumes:
-      - .neo4j/data:/data
-      - .neo4j/logs:/logs
-      - .neo4j/import:/import
-      - .neo4j/plugins:/plugins
+      - ./neo4j/data:/data
+      - ./neo4j/logs:/logs
+      - ./neo4j/import:/import
+      - ./neo4j/plugins:/plugins
